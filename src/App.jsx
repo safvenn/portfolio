@@ -513,11 +513,11 @@ const App = () => {
       });
 
       const colors = {
-        hero: { primary: '#3b82f6', accent: '#8b5cf6' },
-        about: { primary: '#10b981', accent: '#3b82f6' },
-        projects: { primary: '#f59e0b', accent: '#ef4444' },
-        skills: { primary: '#8b5cf6', accent: '#ec4899' },
-        contact: { primary: '#ef4444', accent: '#f59e0b' }
+        hero: { primary: '#0ea5e9', accent: '#6366f1' },      // Ocean Blue & Indigo
+        about: { primary: '#10b981', accent: '#0ea5e9' },     // Emerald & Blue
+        projects: { primary: '#f59e0b', accent: '#d97706' },  // Amber & Gold
+        skills: { primary: '#8b5cf6', accent: '#6366f1' },    // Violet & Indigo
+        contact: { primary: '#0ea5e9', accent: '#10b981' }    // Blue & Emerald
       };
 
       const theme = colors[currentSection] || colors.hero;

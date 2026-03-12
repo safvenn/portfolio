@@ -26,7 +26,7 @@ const Key = ({ position, width = 0.25, color = "#1a1a1a", emissive = "#3b82f6", 
         <meshStandardMaterial 
           color={color} 
           emissive={emissive} 
-          emissiveIntensity={pressed ? 12 : 1.5}
+          emissiveIntensity={pressed ? 6 : 0.8}
           roughness={0.05}
           metalness={1}
         />
@@ -72,7 +72,7 @@ const KeyboardRows = () => {
       });
     });
 
-    keys.push({ label: "ENT", position: [1.8, 0, 0.1], width: 0.6, color: "#1a0b0b", isSpecial: true }); 
+    keys.push({ label: "ENT", position: [1.8, 0, 0.1], width: 0.6, color: "#1a120b", emissive: "#f59e0b", isSpecial: true }); 
     
     return keys;
   }, []);
