@@ -16,7 +16,14 @@ import {
   ChevronRight,
   Send,
   Sparkles,
-  Layers
+  Layers,
+  Layout,
+  Monitor,
+  Globe,
+  Cpu,
+  FileCode,
+  Braces,
+  Box
 } from 'lucide-react';
 import BackgroundScene from './components/Background';
 import Resume from './components/Resume';
@@ -301,43 +308,97 @@ const About = () => {
 
 const Skills = () => {
   const skills = [
-    { category: 'Mobile Dev', icon: <Smartphone size={24} />, items: ['Flutter', 'Dart', 'MVVM Architecture', 'WebGL'] },
-    { category: 'Backend/Firebase', icon: <Database size={24} />, items: ['Auth', 'Firestore', 'Realtime DB', 'Cloud functions'] },
-    { category: 'State Management', icon: <Layers size={24} />, items: ['Riverpod', 'Provider', 'Stateful widgets'] },
-    { category: 'Languages & Web', icon: <Code2 size={24} />, items: ['HTML', 'CSS', 'Python', 'Java', 'Dart', 'MERN Stack'] },
+    { 
+      category: 'Mobile Dev', 
+      icon: <Smartphone size={22} />, 
+      items: [
+        { name: 'Flutter', icon: <Smartphone size={14} /> },
+        { name: 'Dart', icon: <Code2 size={14} /> },
+        { name: 'MVVM Architecture', icon: <Layout size={14} /> },
+        { name: 'WebGL', icon: <Box size={14} /> }
+      ] 
+    },
+    { 
+      category: 'Backend/Firebase', 
+      icon: <Database size={22} />, 
+      items: [
+        { name: 'Auth', icon: <Database size={14} /> },
+        { name: 'Firestore', icon: <Database size={14} /> },
+        { name: 'Realtime DB', icon: <Database size={14} /> },
+        { name: 'Cloud functions', icon: <Code2 size={14} /> }
+      ] 
+    },
+    { 
+      category: 'State Management', 
+      icon: <Layers size={22} />, 
+      items: [
+        { name: 'Riverpod', icon: <Layers size={14} /> },
+        { name: 'Provider', icon: <Layers size={14} /> },
+        { name: 'Stateful widgets', icon: <Layers size={14} /> }
+      ] 
+    },
+    { 
+      category: 'Languages & Web', 
+      icon: <Code2 size={22} />, 
+      items: [
+        { name: 'HTML/CSS', icon: <Globe size={14} /> },
+        { name: 'Python', icon: <FileCode size={14} /> },
+        { name: 'Java', icon: <Braces size={14} /> },
+        { name: 'MERN Stack', icon: <Cpu size={14} /> }
+      ] 
+    },
   ];
 
   return (
-    <section id="skills" className="section" style={{ background: 'rgba(59, 130, 246, 0.02)' }}>
+    <section id="skills" className="section" style={{ background: 'rgba(59, 130, 246, 0.01)' }}>
       <div className="container">
-        <SectionHeader title="Technical Arsenal" subtitle="The tools and technologies I use to bring ideas to life." />
+        <SectionHeader title="Technical Arsenal" subtitle="A detailed look at my development specialization." />
         
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
           {skills.map((skill, idx) => (
             <motion.div 
               key={idx}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
+              className="glass-card"
+              style={{ padding: '1.5rem' }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-                <div style={{ padding: '0.75rem', background: 'var(--glass)', borderRadius: '0.75rem', color: 'var(--primary)' }}>
+                <div style={{ 
+                  width: '40px', 
+                  height: '40px', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center',
+                  background: 'var(--primary)', 
+                  borderRadius: '0.75rem', 
+                  color: 'white',
+                  boxShadow: '0 5px 15px -5px var(--primary)'
+                }}>
                   {skill.icon}
                 </div>
-                <h3 style={{ fontSize: '1.25rem' }}>{skill.category}</h3>
+                <h3 style={{ fontSize: '1.1rem', letterSpacing: '0.5px' }}>{skill.category}</h3>
               </div>
-              <ul style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+              <ul style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
                 {skill.items.map((item, i) => (
                   <li key={i} style={{ 
-                    padding: '0.4rem 1rem', 
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.4rem 0.8rem', 
                     background: 'var(--glass)', 
-                    borderRadius: '0.5rem', 
-                    fontSize: '0.9rem',
+                    borderRadius: '2rem', 
+                    fontSize: '0.8rem',
                     border: '1px solid var(--glass-border)',
-                    color: 'var(--text-muted)'
-                  }}>
-                    {item}
+                    color: '#fff',
+                    transition: 'var(--transition)'
+                  }}
+                  className="skill-tag"
+                  >
+                    <span style={{ color: 'var(--primary)', display: 'flex' }}>{item.icon}</span>
+                    {item.name}
                   </li>
                 ))}
               </ul>
@@ -345,6 +406,13 @@ const Skills = () => {
           ))}
         </div>
       </div>
+      <style>{`
+        .skill-tag:hover {
+          border-color: var(--primary);
+          background: rgba(255, 255, 255, 0.05);
+          transform: translateY(-2px);
+        }
+      `}</style>
     </section>
   );
 };
