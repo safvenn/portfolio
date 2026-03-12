@@ -196,19 +196,12 @@ const Hero = () => {
               Hi, I'm <span style={{ color: '#fff', fontWeight: 600 }}>Safvan Sidheeq</span>. A dedicated Flutter & Firebase Developer and Problem Solver based in Kerala, India. Specializing in building scalable mobile applications.
             </p>
 
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
               <button className="btn btn-primary" onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}>
                 View Projects <ChevronRight size={18} />
               </button>
               <button className="btn btn-outline" onClick={() => window.dispatchEvent(new CustomEvent('open-resume'))}>
                 See Resume
-              </button>
-              <button 
-                className="btn btn-outline" 
-                style={{ border: '1px solid var(--primary)', color: 'var(--primary)' }}
-                onClick={() => window.open('https://mail.google.com/mail/?view=cm&fs=1&to=mkdsafwan4@gmail.com&su=Hiring Inquiry&body=Hi Safvan, I am interested in hiring you for a project.')}
-              >
-                Hire Me
               </button>
             </div>
           </motion.div>
