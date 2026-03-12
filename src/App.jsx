@@ -307,8 +307,7 @@ const Skills = () => {
       items: [
         { name: 'Flutter', icon: <Smartphone size={14} /> },
         { name: 'Dart', icon: <Code2 size={14} /> },
-        { name: 'MVVM Architecture', icon: <Layout size={14} /> },
-        { name: 'WebGL', icon: <Box size={14} /> }
+        { name: 'MVVM Architecture', icon: <Layout size={14} /> }
       ] 
     },
     { 
