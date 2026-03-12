@@ -104,16 +104,16 @@ const Resume = ({ isOpen, onClose }) => {
               <h2 style={{ borderBottom: '1px solid var(--glass-border)', paddingBottom: '0.5rem', marginBottom: '1.5rem' }}>PROJECTS</h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 <div>
-                  <h3 style={{ fontSize: '1.1rem' }}>BikeSpot (Live)</h3>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Real-world motorcycle marketplace with Firebase.</p>
+                  <h3 style={{ fontSize: '1.1rem' }}>Roadstogo (Major Project)</h3>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Comprehensive trip management system built with Flutter.</p>
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.1rem' }}>TripMaster</h3>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Advanced itinerary planning application.</p>
+                  <h3 style={{ fontSize: '1.1rem' }}>MERN E-commerce</h3>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Full-stack internship project (LAST.git).</p>
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.1rem' }}>ACSolutions</h3>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Full-stack accounting tracker.</p>
+                  <h3 style={{ fontSize: '1.1rem' }}>AC Solutions</h3>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Advanced real-time accounting tracker.</p>
                 </div>
               </div>
             </section>

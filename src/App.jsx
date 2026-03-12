@@ -413,33 +413,40 @@ const Projects = () => {
   const projects = [
     {
       title: 'BikeSpot',
-      tag: 'Real Project • Live',
-      description: 'A comprehensive motorcycle listing platform hosted with Firebase. Features real-time search, price tracking, and "Add Bike" functionality.',
+      tag: 'Full Stack • Mobile',
+      description: 'A high-end motorcycle listing platform with real-time Firebase tracking, secure Auth, and dynamic search.',
       image: '/bikespot_live.png',
       link: 'https://github.com/safvenn/bikespot',
       live: 'https://stop-chat-3ab7b.web.app/'
     },
     {
-      title: 'TripMaster',
-      tag: 'Live Web App',
-      description: 'A dedicated web application for travel enthusiasts, focusing on seamless user interface and responsive design.',
+      title: 'Roadstogo',
+      tag: 'College Project • Live',
+      description: 'A comprehensive trip management system for travel enthusiasts. Built as a major college project with Flutter.',
       image: '/trip.png',
-      link: 'https://github.com/safvenn/tripmaster',
+      link: 'https://github.com/safvenn/masterplann.git',
       live: 'https://roadstog00.netlify.app/'
     },
     {
-      title: 'ACSolutions',
-      tag: 'Flutter + Firebase',
-      description: 'Track income, expenses, and profit/loss in real-time with secure cloud storage.',
-      image: '/accounting.png',
-      link: 'https://github.com/safvenn/acsolutions'
+      title: 'MERN E-commerce',
+      tag: 'Internship Project',
+      description: 'A professional full-stack e-commerce solution built during internship. Features product management and user flows.',
+      image: '/shopping.png',
+      link: 'https://github.com/safvenn/LAST.git'
     },
     {
-      title: 'Dart E-commerce',
-      tag: 'Full E-commerce',
-      description: 'Authentication, cart management, and order tracking system using Firebase backend.',
+      title: 'AC Solutions',
+      tag: 'Flutter + Firebase',
+      description: 'Advanced accounting tracker for real-time sales, income, and profit/loss monitoring with secure cloud storage.',
+      image: '/accounting.png',
+      link: 'https://github.com/safvenn/ac-solutions.git'
+    },
+    {
+      title: 'E-commerce Admin',
+      tag: 'Flutter • Dart',
+      description: 'Sophisticated e-commerce app with full admin control, integrated shopping cart, and Firebase backend.',
       image: '/shopping.png',
-      link: 'https://github.com/safvenn/dart'
+      link: 'https://github.com/safvenn/dart.git'
     }
   ];
 
