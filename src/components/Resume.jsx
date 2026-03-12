@@ -121,8 +121,19 @@ const Resume = ({ isOpen, onClose }) => {
         </div>
 
         <div style={{ marginTop: '6rem', textAlign: 'center' }}>
-          <button className="btn btn-primary" style={{ padding: '1rem 3rem' }}>
-            <Download size={20} /> Download PDF Version
+          <button 
+            className="btn btn-primary" 
+            style={{ padding: '1rem 3rem' }}
+            onClick={() => {
+              const link = document.createElement('a');
+              link.href = '/resume_ats.html';
+              link.target = '_blank';
+              link.download = 'Safvan_Sidheeq_Resume.html';
+              link.click();
+              alert('Opening ATS Resume. To save as PDF:\n1. Press Ctrl+P (Cmd+P)\n2. Select "Save as PDF"');
+            }}
+          >
+            <Download size={20} /> Download/Print ATS Resume
           </button>
         </div>
       </div>
