@@ -1,132 +1,182 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;600;800;900&display=swap');
 
+/* =============================================
+   HULY.IO DESIGN SYSTEM
+   ============================================= */
 :root {
-  --bg-dark: #020205;
-  --bg-card: rgba(15, 15, 20, 0.7);
-  --primary: var(--theme-primary, #3b82f6); 
-  --secondary: #10b981; 
-  --accent: var(--theme-accent, #8b5cf6); 
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --glass: rgba(255, 255, 255, 0.02);
-  --glass-border: rgba(255, 255, 255, 0.06);
-  --font-main: 'Outfit', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-  --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --bg:          #090a0c;
+  --bg-surface:  #0e1014;
+  --bg-card:     rgba(18, 20, 26, 0.85);
+  --border:      rgba(255, 255, 255, 0.06);
+  --border-hover:rgba(255, 255, 255, 0.14);
+
+  /* Huly accent: red theme */
+  --primary:     var(--theme-primary, #4c060b);
+  --primary-dim: rgba(227, 0, 15, 0.15);
+  --accent:      var(--theme-accent,  #ff4d4d);
+
+  --text-1:      #ffffff;
+  --text-2:      #8a8fa8;
+  --text-3:      #474c61;
+
+  --font-main:  'Inter', sans-serif;
+  --font-mono:  'JetBrains Mono', monospace;
+  --font-hero:  'Outfit', sans-serif;
+  --font-nike:  'Barlow Condensed', sans-serif;
+
+  /* Modern glowing accent */
+  --cta-glow:   rgba(227, 0, 15, 0.6);
+
+  --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius-card: 16px;
+  --radius-pill: 9999px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--bg-dark);
-  color: var(--text-main);
+  background-color: var(--bg);
+  color: var(--text-1);
   font-family: var(--font-main);
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#root {
-  min-height: 100vh;
-}
+#root { min-height: 100vh; }
 
 h1, h2, h3, h4 {
-  font-weight: 700;
-  color: #fff;
+  font-weight: 800;
+  color: var(--text-1);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: var(--transition);
-}
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+ul { list-style: none; }
 
-ul {
-  list-style: none;
-}
-
-/* Background Animation */
-.bg-gradient {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-image: 
-    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.05) 0%, transparent 40%);
-  background-attachment: fixed;
-}
-
-
-/* Layout Utilities */
+/* =============================================
+   LAYOUT
+   ============================================= */
 .container {
-  max-width: 1200px;
+  max-width: 1140px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-.section {
-  padding: 8rem 0;
+.section { padding: 9rem 0; }
+
+/* =============================================
+   DOT GRID utility (sections that need it via CSS)
+   ============================================= */
+.dot-grid-section {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
+/* =============================================
+   HULY GLASS CARD
+   ============================================= */
 .glass-card {
   background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: 1.5rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
   padding: 2rem;
   transition: var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 
+/* Top glow line — huly's "illuminated edge" */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 40%, rgba(180,190,255,0.30) 60%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.glass-card:hover::before { opacity: 1; }
 .glass-card:hover {
-  border-color: var(--primary);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
+  border-color: var(--border-hover);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(139, 92, 246, 0.15);
 }
 
-/* Buttons */
+/* =============================================
+   BUTTONS  — Huly style
+   ============================================= */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.75rem;
-  font-weight: 500;
+  gap: 0.6rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   cursor: pointer;
   transition: var(--transition);
   border: none;
   font-family: var(--font-main);
+  position: relative;
 }
 
+/* Primary pill — grey/white like huly's "SEE IN ACTION" */
 .btn-primary {
-  background: var(--primary);
-  color: white;
+  background: rgba(220, 225, 240, 0.12);
+  color: var(--text-1);
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 8px 40px var(--cta-glow);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  bottom: -12px; left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 12px;
+  background: var(--cta-glow);
+  filter: blur(10px);
+  border-radius: 50%;
+  opacity: 0.8;
+  transition: opacity 0.3s;
 }
 
 .btn-primary:hover {
-  background: #2563eb;
-  transform: scale(1.05);
+  background: rgba(220, 225, 240, 0.18);
+  box-shadow: 0 12px 50px var(--cta-glow), 0 0 0 1px rgba(255,255,255,0.22);
+  transform: translateY(-2px);
 }
 
+/* Outline secondary */
 .btn-outline {
   background: transparent;
-  color: white;
-  border: 1px solid var(--glass-border);
+  color: var(--text-2);
+  border: 1px solid var(--border);
+  font-size: 0.8rem;
 }
 
 .btn-outline:hover {
-  background: var(--glass);
-  border-color: var(--primary);
+  color: var(--text-1);
+  border-color: var(--border-hover);
+  background: rgba(255,255,255,0.04);
 }
 
-/* Project Cards */
+/* =============================================
+   PROJECT & IMAGE CARDS
+   ============================================= */
 .project-card {
   position: relative;
   overflow: hidden;
@@ -138,120 +188,297 @@ ul {
 .project-img-container {
   width: 100%;
   height: 200px;
-  border-radius: 1rem;
+  border-radius: 10px;
   overflow: hidden;
   margin-bottom: 1.5rem;
+  position: relative;
+  border: 1px solid var(--border);
+}
+
+.project-img-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(9,10,12,0.85) 100%);
 }
 
 .project-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: var(--transition);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.project-card:hover .project-img {
-  transform: scale(1.1);
-}
+.project-card:hover .project-img { transform: scale(1.06); }
 
-/* Typography Utilities */
+/* =============================================
+   TYPOGRAPHY
+   ============================================= */
+/* Huly: headline uses a very tight gradient from bright white to slightly blue-tinted */
 .gradient-text {
-  background: linear-gradient(135deg, white 30%, var(--primary) 100%);
+  background: linear-gradient(135deg, #fff 30%, var(--accent) 80%, var(--primary) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.text-sm { font-size: 0.875rem; }
-.text-muted { color: var(--text-muted); }
-
-/* Animation Classes */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
+.tag-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-family: var(--font-mono);
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+.text-muted { color: var(--text-2); }
+.text-sm    { font-size: 0.875rem; }
+
+/* =============================================
+   SECTION HEADER — Huly layout
+   ============================================= */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  margin-bottom: 1.25rem;
+  padding: 0.3rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: rgba(255,255,255,0.025);
 }
 
-::-webkit-scrollbar-track {
-  background: var(--bg-dark);
+/* Thin horizontal rule glow */
+.glow-rule {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(90,111,255,0.4), rgba(155,143,255,0.2), transparent);
+  margin-bottom: 0;
+  border: none;
+  opacity: 0.6;
 }
 
+/* =============================================
+   SCROLLBAR
+   ============================================= */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: rgba(255,255,255,0.08);
   border-radius: 10px;
 }
+::-webkit-scrollbar-thumb:hover { background: rgba(90,111,255,0.4); }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+/* =============================================
+   SKILL TAG
+   ============================================= */
+.skill-tag {
+  transition: var(--transition);
+}
+.skill-tag:hover {
+  border-color: rgba(255,255,255,0.14) !important;
+  background: rgba(255,255,255,0.05) !important;
+  transform: translateY(-1px);
 }
 
-@media (max-width: 1024px) {
-  .hero-grid {
-    grid-template-columns: 1fr !important;
-    text-align: center;
-    gap: 2rem !important;
-  }
-  
-  .hero-section {
-    padding-top: 10rem !important;
-  }
-
-  .hero-grid > div:first-child {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  h1 {
-    font-size: 3.5rem !important;
-  }
+/* =============================================
+   CURSOR
+   ============================================= */
+.cursor-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--text-1);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
 }
 
+.cursor-ring {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9997;
+  transform: translate(-50%, -50%);
+  transition: none;
+}
+
+/* =============================================
+   HERO — scroll-animated wrapper
+   ============================================= */
 .hero-grid {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
   gap: 4rem;
 }
 
+/* Feature pills row like huly */
+.feature-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--text-2);
+}
+
+.feature-pills span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.feature-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--primary);
+  opacity: 0.7;
+  display: inline-block;
+}
+
+/* =============================================
+   LOADER
+   ============================================= */
+.loader-bar {
+  width: 180px;
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* =============================================
+   TIMELINE DOT
+   ============================================= */
+.timeline-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 10px var(--primary);
+  flex-shrink: 0;
+}
+
+/* =============================================
+   SECTION DIVIDER
+   ============================================= */
+.section-glow-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1024px) {
+  h1 { font-size: 3.5rem !important; }
+}
+
 @media (max-width: 768px) {
-  .section { padding: 4rem 0; }
-  .container { padding: 0 1.5rem; }
-  
-  h1 {
-    font-size: 2.8rem !important;
-  }
-
-  .btn {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .glass-card {
-    padding: 1.5rem;
-  }
-
-  .project-img-container {
-    height: 180px;
-  }
+  .section { padding: 5rem 0; }
+  .container { padding: 0 1.25rem; }
+  h1 { font-size: 2.8rem !important; }
+  .btn { width: 100%; justify-content: center; }
+  .glass-card { padding: 1.5rem; }
+  .project-img-container { height: 170px; }
+  .feature-pills { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 480px) {
-  h1 {
-    font-size: 2.2rem !important;
-  }
-  
-  .section-header h2 {
-    font-size: 2rem !important;
-  }
+  h1 { font-size: 2.3rem !important; }
 }
 
-@keyframes pulse {
-  from { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
-  to { box-shadow: 0 0 0 20px rgba(59, 130, 246, 0); }
+/* =============================================
+   PULSE ANIMATION
+   ============================================= */
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(90,111,255,0.6); }
+  50% { box-shadow: 0 0 0 5px rgba(90,111,255,0); }
+}
+
+/* =============================================
+   HERO SIDE ELEMENTS
+   ============================================= */
+@media (min-width: 1024px) {
+  .hero-side-element { display: block !important; }
+}
+
+@media (max-width: 1023px) {
+  .hero-side-element { display: none !important; }
+}
+
+@keyframes scrollText {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.scrolling-text {
+  animation: scrollText 20s linear infinite;
+  white-space: nowrap;
+}
+
+/* =============================================
+   HERO TEXT
+   ============================================= */
+.hero-text-container {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 6%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-title {
+  font-family: var(--font-nike);
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+}
+
+.hero-subtitle {
+  margin-top: 0.5rem;
+  font-size: clamp(0.7rem, 2.5vw, 1rem);
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.9);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hero-subtitle-line {
+  width: 40px;
+  height: 1px;
+  background: rgba(255,255,255,0.5);
+}
+
+@media (max-width: 768px) {
+  .hero-text-container {
+    top: auto;
+    bottom: 8%;
+    transform: none;
+    left: 5%;
+  }
+  .hero-subtitle-line {
+    width: 20px;
+  }
 }
