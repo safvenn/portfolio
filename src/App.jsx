@@ -7,7 +7,7 @@ import {
   BrainCircuit, Table2, PieChart, TrendingUp,
   Award, Briefcase, GraduationCap,
   Activity, Target, Lightbulb, Globe,
-  ChevronDown
+  ChevronDown, Wrench, Eye
 } from 'lucide-react';
 import Resume from './components/Resume';
 
@@ -164,11 +164,11 @@ const BackToTop = () => {
           style={{
             position: 'fixed', bottom: '2rem', right: '2rem', zIndex: 900,
             width: 44, height: 44, borderRadius: '12px',
-            background: 'linear-gradient(135deg, rgba(59,130,246,0.2), rgba(6,182,212,0.15))',
-            border: '1px solid rgba(59,130,246,0.25)', color: '#60a5fa',
+            background: '#fff',
+            border: '1px solid rgba(101,82,208,0.2)', color: '#6552D0',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            cursor: 'pointer', backdropFilter: 'blur(12px)',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.4)'
+            cursor: 'pointer',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.08)'
           }}
           aria-label="Back to top"
         >
@@ -212,6 +212,7 @@ const Navbar = () => {
   const navLinks = useMemo(() => [
     { name: 'About',          href: '#about'          },
     { name: 'Skills',         href: '#skills'         },
+    { name: 'Tools',          href: '#tools'          },
     { name: 'Projects',       href: '#projects'       },
     { name: 'Certifications', href: '#certifications' },
     { name: 'Contact',        href: '#contact'        },
@@ -221,10 +222,10 @@ const Navbar = () => {
     <nav style={{
       position: 'fixed', top: 0, width: '100%', zIndex: 1000,
       padding: isScrolled ? '0.75rem 0' : '1.5rem 0',
-      background: isScrolled ? 'rgba(6,8,13,0.9)' : 'transparent',
+      background: isScrolled ? 'rgba(255,255,255,0.95)' : 'transparent',
       backdropFilter: isScrolled ? 'blur(20px)' : 'none',
       WebkitBackdropFilter: isScrolled ? 'blur(20px)' : 'none',
-      borderBottom: isScrolled ? '1px solid rgba(255,255,255,0.04)' : 'none',
+      borderBottom: isScrolled ? '1px solid rgba(0,0,0,0.06)' : 'none',
       transform: isHidden && !isMenuOpen ? 'translateY(-100%)' : 'translateY(0)',
       transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
     }}>
@@ -238,7 +239,7 @@ const Navbar = () => {
         >
           <div style={{ 
             width: 32, height: 32, borderRadius: '10px', 
-            background: 'linear-gradient(135deg, #3b82f6, #06b6d4)', 
+            background: 'linear-gradient(135deg, #6552D0, #8b5cf6)', 
             display: 'flex', alignItems: 'center', justifyContent: 'center', 
             fontWeight: 800, fontSize: '0.85rem', color: '#fff' 
           }}>S</div>
@@ -257,7 +258,7 @@ const Navbar = () => {
               key={link.name}
               href={link.href}
               variants={{ hidden: { opacity: 0, y: -8 }, visible: { opacity: 1, y: 0 } }}
-              whileHover={{ y: -2, color: '#60a5fa' }}
+              whileHover={{ y: -2, color: '#7c6bef' }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-2)', letterSpacing: '0.08em', textTransform: 'uppercase' }}
             >
@@ -271,7 +272,7 @@ const Navbar = () => {
           className="nav-mobile-toggle"
           whileTap={{ scale: 0.9 }}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          style={{ cursor: 'pointer', display: 'none', background: 'none', border: 'none', color: '#fff', padding: '8px', minHeight: 44, minWidth: 44, alignItems: 'center', justifyContent: 'center' }}
+          style={{ cursor: 'pointer', display: 'none', background: 'none', border: 'none', color: '#1a1a2e', padding: '8px', minHeight: 44, minWidth: 44, alignItems: 'center', justifyContent: 'center' }}
           aria-label="Toggle menu"
         >
           {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -288,7 +289,7 @@ const Navbar = () => {
             transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
             style={{
               position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-              background: 'rgba(6,8,13,0.98)', backdropFilter: 'blur(24px)',
+              background: 'rgba(255,255,255,0.98)', backdropFilter: 'blur(24px)',
               display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
               gap: '0.5rem', overflow: 'hidden'
             }}
@@ -297,7 +298,7 @@ const Navbar = () => {
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsMenuOpen(false)}
-              style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', background: 'none', border: 'none', color: '#fff', padding: '8px', cursor: 'pointer', minHeight: 44, minWidth: 44, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', background: 'none', border: 'none', color: '#1a1a2e', padding: '8px', cursor: 'pointer', minHeight: 44, minWidth: 44, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               aria-label="Close menu"
             >
               <X size={24} />
@@ -437,7 +438,7 @@ const Hero = () => {
         className="hero-floating-icon"
         style={{ position: 'absolute', top: '15%', right: '12%', opacity: 0.07, zIndex: 0 }}
       >
-        <BarChart3 size={100} color="#3b82f6" />
+        <BarChart3 size={100} color="#6552D0" />
       </motion.div>
       <motion.div
         animate={{ y: [10, -15, 10] }}
@@ -445,7 +446,7 @@ const Hero = () => {
         className="hero-floating-icon"
         style={{ position: 'absolute', bottom: '20%', left: '8%', opacity: 0.05, zIndex: 0 }}
       >
-        <PieChart size={80} color="#06b6d4" />
+        <PieChart size={80} color="#8b5cf6" />
       </motion.div>
 
       <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
@@ -462,9 +463,9 @@ const Hero = () => {
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
               padding: '0.4rem 1.2rem', borderRadius: '9999px',
-              border: '1px solid rgba(59,130,246,0.2)',
-              background: 'rgba(59,130,246,0.06)',
-              fontSize: '0.75rem', color: '#60a5fa',
+              border: '1px solid rgba(101,82,208,0.25)',
+              background: 'rgba(101,82,208,0.06)',
+              fontSize: '0.75rem', color: '#7c6bef',
               fontFamily: 'var(--font-mono)', letterSpacing: '0.08em',
               marginBottom: '2rem'
             }}
@@ -502,7 +503,7 @@ const Hero = () => {
                   fontSize: 'clamp(1.1rem, 3vw, 1.8rem)',
                   fontWeight: 700,
                   fontFamily: 'var(--font-display)',
-                  color: '#06b6d4',
+                  color: '#7c6bef',
                   letterSpacing: '-0.02em'
                 }}
               >
@@ -556,8 +557,8 @@ const Hero = () => {
             {[
               { number: '4', suffix: '+', label: 'Projects' },
               { number: '150', suffix: 'K+', label: 'Records Processed' },
-              { number: '10', suffix: '+', label: 'SQL Queries' },
-              { number: '2', suffix: '', label: 'Certifications' },
+              { number: '100', suffix: '+', label: 'SQL Queries' },
+              { number: '4', suffix: '', label: 'Certifications' },
             ].map((stat, i) => (
               <motion.div key={i} className="stat-item" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
                 <div className="stat-number gradient-text">
@@ -597,9 +598,9 @@ const Hero = () => {
 // =============================================
 const About = () => {
   const expertise = useMemo(() => [
-    { icon: <Table2 size={20} />, title: 'Data Cleaning', desc: 'Transforming messy, incomplete datasets into structured, analysis-ready data.', color: '#3b82f6' },
-    { icon: <Database size={20} />, title: 'SQL & Data Modeling', desc: 'Building multi-table data models and executing complex analytical queries.', color: '#06b6d4' },
-    { icon: <BarChart3 size={20} />, title: 'Dashboard Creation', desc: 'Designing interactive Power BI and Excel dashboards for KPI tracking.', color: '#8b5cf6' },
+    { icon: <Table2 size={20} />, title: 'Data Cleaning', desc: 'Transforming messy, incomplete datasets into structured, analysis-ready data.', color: '#6552D0' },
+    { icon: <Database size={20} />, title: 'SQL & Data Modeling', desc: 'Building multi-table data models and executing complex analytical queries.', color: '#8b5cf6' },
+    { icon: <BarChart3 size={20} />, title: 'Dashboard Creation', desc: 'Designing interactive Power BI and Excel dashboards for KPI tracking.', color: '#7c6bef' },
     { icon: <TrendingUp size={20} />, title: 'Statistical Analysis', desc: 'Identifying patterns, trends, and outliers to support data-driven decisions.', color: '#f59e0b' },
     { icon: <BrainCircuit size={20} />, title: 'EDA & Insights', desc: 'Conducting exploratory analysis to uncover hidden business insights.', color: '#10b981' },
     { icon: <Target size={20} />, title: 'Business Intelligence', desc: 'Translating data findings into actionable business recommendations.', color: '#ef4444' },
@@ -615,8 +616,8 @@ const About = () => {
             <p style={{ color: 'var(--text-2)', fontSize: '0.95rem', lineHeight: 1.85, marginBottom: '1.25rem' }}>
               I am a detail-oriented aspiring Data Analyst with strong skills in data cleaning, exploratory data analysis, 
               multi-table integration, and dashboard creation. I have hands-on experience working with real-world datasets 
-              using <span style={{ color: '#60a5fa', fontWeight: 600 }}>Python</span>, <span style={{ color: '#06b6d4', fontWeight: 600 }}>SQL</span>, 
-              <span style={{ color: '#8b5cf6', fontWeight: 600 }}> Excel</span>, and <span style={{ color: '#f59e0b', fontWeight: 600 }}>Power BI</span> to 
+              using <span style={{ color: '#7c6bef', fontWeight: 600 }}>Python</span>, <span style={{ color: '#8b5cf6', fontWeight: 600 }}>SQL</span>, 
+              <span style={{ color: '#A5A5A5', fontWeight: 600 }}> Excel</span>, and <span style={{ color: '#f59e0b', fontWeight: 600 }}>Power BI</span> to 
               generate meaningful business insights.
             </p>
             <p style={{ color: 'var(--text-2)', fontSize: '0.95rem', lineHeight: 1.85 }}>
@@ -655,7 +656,7 @@ const About = () => {
         </motion.div>
 
         <FadeIn delay={0.2}>
-          <blockquote style={{ marginTop: '3rem', padding: '1.5rem 1.75rem', borderLeft: '2px solid #3b82f6', background: 'rgba(59,130,246,0.04)', borderRadius: '0 12px 12px 0' }}>
+          <blockquote style={{ marginTop: '3rem', padding: '1.5rem 1.75rem', borderLeft: '2px solid #6552D0', background: 'rgba(101,82,208,0.04)', borderRadius: '0 12px 12px 0' }}>
             <p style={{ fontSize: '0.95rem', fontStyle: 'italic', color: 'var(--text-2)', lineHeight: 1.8 }}>
               "I believe every dataset has a story to tell. My job is to clean the noise, find the patterns, and present insights that drive real business impact."
             </p>
@@ -671,11 +672,11 @@ const About = () => {
 // =============================================
 const Skills = () => {
   const skills = useMemo(() => [
-    { category: 'Programming', icon: <FileSpreadsheet size={20}/>, color: '#3b82f6',
+    { category: 'Programming', icon: <FileSpreadsheet size={20}/>, color: '#6552D0',
       items: ['Python', 'Pandas', 'NumPy', 'SQL / MySQL'] },
-    { category: 'Visualization', icon: <BarChart3 size={20}/>, color: '#06b6d4',
+    { category: 'Visualization', icon: <BarChart3 size={20}/>, color: '#8b5cf6',
       items: ['Power BI', 'Matplotlib', 'Seaborn', 'Microsoft Excel'] },
-    { category: 'Data Analysis', icon: <TrendingUp size={20}/>, color: '#8b5cf6',
+    { category: 'Data Analysis', icon: <TrendingUp size={20}/>, color: '#7c6bef',
       items: ['Data Cleaning', 'EDA', 'Data Segmentation', 'Outlier Detection'] },
     { category: 'Data Modeling', icon: <Database size={20}/>, color: '#f59e0b',
       items: ['Multi-table Integration', 'ETL Pipelines', 'KPI Reporting', 'Statistical Analysis'] },
@@ -713,7 +714,7 @@ const Skills = () => {
                     style={{
                       display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
                       padding: '0.35rem 0.7rem',
-                      background: 'rgba(255,255,255,0.03)',
+                      background: 'rgba(0,0,0,0.03)',
                       borderRadius: '6px', fontSize: '0.76rem',
                       border: '1px solid var(--border)',
                       color: 'var(--text-2)', fontFamily: 'var(--font-mono)',
@@ -806,8 +807,8 @@ const Projects = () => {
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '1.25rem' }}>
                     {project.tools.map((t, i) => (
                       <span key={i} style={{
-                        padding: '0.2rem 0.5rem', borderRadius: '4px',
-                        background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)',
+                        padding: '0.2rem 0.5rem', borderRadius: '6px',
+                        background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)',
                         fontSize: '0.68rem', color: 'var(--text-3)', fontFamily: 'var(--font-mono)'
                       }}>{t}</span>
                     ))}
@@ -832,80 +833,205 @@ const Projects = () => {
 };
 
 // =============================================
+// TOOLS
+// =============================================
+const Tools = () => {
+  const tools = useMemo(() => [
+    { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+    { name: 'Pandas', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg' },
+    { name: 'NumPy', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg' },
+    { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+    { name: 'Power BI', icon: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg' },
+    { name: 'Excel', icon: 'https://img.icons8.com/color/96/microsoft-excel-2019.png' },
+    { name: 'Matplotlib', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg' },
+    { name: 'Jupyter', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg' },
+    { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
+    { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+    { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
+    { name: 'Kaggle', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kaggle/kaggle-original.svg' },
+  ], []);
+
+  return (
+    <section id="tools" className="section">
+      <div className="container">
+        <SectionHeader label="Toolkit" title="Tools I Use" subtitle="Industry-standard tools and technologies in my data analytics workflow." />
+        <motion.div
+          className="tools-grid"
+          initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
+          variants={staggerContainer}
+        >
+          {tools.map((tool, idx) => (
+            <motion.div key={idx} variants={staggerItem} className="tool-item">
+              <div className="tool-icon">
+                <img src={tool.icon} alt={tool.name} loading="lazy" />
+              </div>
+              <span className="tool-name">{tool.name}</span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+// =============================================
 // CERTIFICATIONS
 // =============================================
 const Certifications = () => {
-  const certifications = useMemo(() => [
-    { title: 'Exploratory Data Analysis with Python and Pandas', provider: 'Coursera', year: '2026', icon: '📊', color: '#3b82f6', skills: ['Data Cleaning', 'Data Transformation', 'EDA', 'Statistical Summaries'] },
-    { title: 'Databases and SQL for Data Science with Python', provider: 'IBM / Coursera', year: '2026', icon: '🗃️', color: '#06b6d4', skills: ['SQL Queries', 'Database Management', 'Data Retrieval', 'Aggregations'] },
+  const [lightboxPdf, setLightboxPdf] = useState(null);
+
+  const allCerts = useMemo(() => [
+    {
+      title: 'Exploratory Data Analysis with Python and Pandas',
+      provider: 'Coursera',
+      year: '2026',
+      color: '#6552D0',
+      pdf: './cert-eda-coursera.pdf',
+      skills: ['Data Cleaning', 'Data Transformation', 'EDA', 'Statistical Summaries'],
+      type: 'certification'
+    },
+    {
+      title: 'Databases and SQL for Data Science with Python',
+      provider: 'IBM / Coursera',
+      year: '2026',
+      color: '#8b5cf6',
+      pdf: './cert-sql-coursera.pdf',
+      skills: ['SQL Queries', 'Database Management', 'Data Retrieval', 'Aggregations'],
+      type: 'certification'
+    },
+    {
+      title: 'Deloitte — Data Analytics Job Simulation',
+      provider: 'Forage',
+      year: 'April 2026',
+      color: '#7c6bef',
+      pdf: './cert-deloitte-forage.pdf',
+      skills: ['Data Analysis', 'Forensic Technology', 'Dataset Interpretation', 'Business Insight Reporting'],
+      type: 'simulation'
+    },
+    {
+      title: 'Tata — Data Visualization Job Simulation',
+      provider: 'Forage',
+      year: 'April 2026',
+      color: '#f59e0b',
+      pdf: './cert-tata-forage.pdf',
+      skills: ['Business Scenario Framing', 'Selecting Visualization Types', 'Creating Business Charts', 'Communicating Insights'],
+      type: 'simulation'
+    },
   ], []);
 
-  const simulations = useMemo(() => [
-    { title: 'Deloitte — Data Analytics Job Simulation', platform: 'Forage', completed: 'April 2026', icon: '🏢', color: '#8b5cf6', tasks: ['Data Analysis', 'Forensic Technology', 'Dataset Interpretation', 'Business Insight Reporting'] },
-    { title: 'Tata — Data Visualization Job Simulation', platform: 'Forage', completed: 'April 2026', icon: '📈', color: '#f59e0b', tasks: ['Business Scenario Framing', 'Selecting Visualization Types', 'Creating Business Charts', 'Communicating Insights'] },
-  ], []);
+  // Lock body scroll when lightbox is open
+  useEffect(() => {
+    document.body.style.overflow = lightboxPdf ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [lightboxPdf]);
 
   return (
     <section id="certifications" className="section">
       <div className="container">
-        <SectionHeader label="Credentials" title="Certifications & Simulations" subtitle="Industry-recognized certifications and professional job simulations." />
-        
-        <FadeIn>
-          <h3 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Award size={17} color="#3b82f6" /> Certifications
-          </h3>
-        </FadeIn>
-        <motion.div
-          className="cert-grid"
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.25rem', marginBottom: '3rem' }}
-          initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
-          variants={staggerContainer}
-        >
-          {certifications.map((cert, idx) => (
-            <motion.div key={idx} variants={staggerItem} className="cert-card">
-              <div className="cert-badge" style={{ background: `${cert.color}12`, border: `1px solid ${cert.color}25` }}>{cert.icon}</div>
-              <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.35rem', lineHeight: 1.3 }}>{cert.title}</h4>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-                <span style={{ fontSize: '0.78rem', color: cert.color, fontWeight: 600 }}>{cert.provider}</span>
-                <span style={{ fontSize: '0.72rem', color: 'var(--text-3)' }}>• {cert.year}</span>
-              </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-                {cert.skills.map((s, i) => (
-                  <span key={i} className="skill-tag" style={{ padding: '0.25rem 0.6rem', borderRadius: '4px', fontSize: '0.7rem', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border)', color: 'var(--text-2)', fontFamily: 'var(--font-mono)' }}>{s}</span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        <SectionHeader label="Credentials" title="Certifications & Simulations" subtitle="Industry-recognized certifications and professional job simulations — click to view." />
 
-        <FadeIn>
-          <h3 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Briefcase size={17} color="#8b5cf6" /> Job Simulations
-          </h3>
-        </FadeIn>
         <motion.div
           className="cert-grid"
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.25rem' }}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}
           initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }}
           variants={staggerContainer}
         >
-          {simulations.map((sim, idx) => (
-            <motion.div key={idx} variants={staggerItem} className="cert-card">
-              <div className="cert-badge" style={{ background: `${sim.color}12`, border: `1px solid ${sim.color}25` }}>{sim.icon}</div>
-              <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.35rem', lineHeight: 1.3 }}>{sim.title}</h4>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-                <span style={{ fontSize: '0.78rem', color: sim.color, fontWeight: 600 }}>{sim.platform}</span>
-                <span style={{ fontSize: '0.72rem', color: 'var(--text-3)' }}>• {sim.completed}</span>
+          {allCerts.map((cert, idx) => (
+            <motion.div
+              key={idx}
+              variants={staggerItem}
+              className="cert-image-card"
+              onClick={() => setLightboxPdf(cert.pdf)}
+            >
+              {/* PDF Preview */}
+              <div className="cert-image-wrapper">
+                <iframe
+                  src={`${cert.pdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                  title={cert.title}
+                  loading="lazy"
+                />
+                <div className="cert-image-overlay">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    style={{
+                      display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                      padding: '0.4rem 0.85rem', borderRadius: '8px',
+                      background: 'rgba(101,82,208,0.3)', backdropFilter: 'blur(8px)',
+                      border: '1px solid rgba(101,82,208,0.4)',
+                      color: '#fff', fontSize: '0.72rem', fontWeight: 600,
+                      cursor: 'pointer'
+                    }}
+                  >
+                    <Eye size={13} /> View Certificate
+                  </motion.div>
+                </div>
               </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-                {sim.tasks.map((t, i) => (
-                  <span key={i} className="skill-tag" style={{ padding: '0.25rem 0.6rem', borderRadius: '4px', fontSize: '0.7rem', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border)', color: 'var(--text-2)', fontFamily: 'var(--font-mono)' }}>{t}</span>
-                ))}
+
+              {/* Info */}
+              <div className="cert-image-info">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                  <span style={{
+                    padding: '0.15rem 0.45rem', borderRadius: '4px', fontSize: '0.6rem',
+                    fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em',
+                    background: cert.type === 'certification' ? 'rgba(101,82,208,0.12)' : 'rgba(139,92,246,0.12)',
+                    color: cert.type === 'certification' ? '#7c6bef' : '#a78bfa',
+                    border: `1px solid ${cert.type === 'certification' ? 'rgba(101,82,208,0.25)' : 'rgba(139,92,246,0.25)'}`,
+                    fontFamily: 'var(--font-mono)'
+                  }}>
+                    {cert.type === 'certification' ? '🎓 Certification' : '💼 Simulation'}
+                  </span>
+                </div>
+                <h4 style={{ fontSize: '0.88rem', fontWeight: 700, marginBottom: '0.3rem', lineHeight: 1.3 }}>{cert.title}</h4>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                  <span style={{ fontSize: '0.75rem', color: cert.color, fontWeight: 600 }}>{cert.provider}</span>
+                  <span style={{ fontSize: '0.68rem', color: 'var(--text-3)' }}>• {cert.year}</span>
+                </div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem' }}>
+                  {cert.skills.map((s, i) => (
+                    <span key={i} style={{
+                      padding: '0.2rem 0.5rem', borderRadius: '4px', fontSize: '0.65rem',
+                      background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border)',
+                      color: 'var(--text-2)', fontFamily: 'var(--font-mono)'
+                    }}>{s}</span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
         </motion.div>
       </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxPdf && (
+          <motion.div
+            className="cert-lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => setLightboxPdf(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+              onClick={(e) => e.stopPropagation()}
+              style={{ width: '90%', maxWidth: 900 }}
+            >
+              <iframe
+                src={`${lightboxPdf}#toolbar=0&navpanes=0`}
+                title="Certificate Preview"
+                style={{ width: '100%', height: '85vh', border: 'none', borderRadius: '12px', boxShadow: '0 32px 80px rgba(0,0,0,0.6)' }}
+              />
+            </motion.div>
+            <button className="cert-lightbox-close" onClick={() => setLightboxPdf(null)}>
+              <X size={18} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
@@ -926,7 +1052,7 @@ const Contact = ({ setIsResumeOpen }) => {
         <SectionHeader label="Contact" title="Let's Connect" subtitle="Open to Data Analyst roles and analytical project collaborations." />
         <FadeIn>
           <div className="glass-card contact-grid" style={{ padding: 'clamp(1.5rem, 4vw, 3.5rem)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '3rem', overflow: 'hidden', position: 'relative' }}>
-            <div style={{ position: 'absolute', top: '-30%', right: '-10%', width: 400, height: 400, background: 'radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0 }} />
+            <div style={{ position: 'absolute', top: '-30%', right: '-10%', width: 400, height: 400, background: 'radial-gradient(circle, rgba(101,82,208,0.07) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0 }} />
 
             <div style={{ position: 'relative', zIndex: 1 }}>
               <h2 style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.5rem)', marginBottom: '1rem', fontWeight: 900, letterSpacing: '-0.04em' }}>
@@ -942,7 +1068,7 @@ const Contact = ({ setIsResumeOpen }) => {
                   { Icon: MapPin, label: 'Location', val: 'Kerala, India' }
                 ].map(({ Icon, label, val }) => (
                   <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <div style={{ width: 36, height: 36, background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.15)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#60a5fa', flexShrink: 0 }}>
+                    <div style={{ width: 36, height: 36, background: 'rgba(101,82,208,0.1)', border: '1px solid rgba(101,82,208,0.2)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#7c6bef', flexShrink: 0 }}>
                       <Icon size={16} />
                     </div>
                     <div style={{ minWidth: 0 }}>
@@ -958,7 +1084,7 @@ const Contact = ({ setIsResumeOpen }) => {
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
                   {interests.map((interest, i) => (
                     <span key={i} className="interest-pill">
-                      <Lightbulb size={10} color="#3b82f6" /> {interest}
+                      <Lightbulb size={10} color="#6552D0" /> {interest}
                     </span>
                   ))}
                 </div>
@@ -982,14 +1108,14 @@ const Contact = ({ setIsResumeOpen }) => {
                 </motion.a>
               </div>
               <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
-                className="btn btn-outline" style={{ width: '100%', padding: '0.85rem', justifyContent: 'center', borderColor: 'rgba(59,130,246,0.2)', color: '#60a5fa' }}
+                className="btn btn-outline" style={{ width: '100%', padding: '0.85rem', justifyContent: 'center', borderColor: 'rgba(101,82,208,0.25)', color: '#7c6bef' }}
                 onClick={() => setIsResumeOpen(true)}>
                 <Download size={15} /> View Full Resume
               </motion.button>
 
-              <div style={{ marginTop: '0.5rem', padding: '1.15rem', border: '1px solid var(--border)', borderRadius: '12px', background: 'rgba(255,255,255,0.02)' }}>
+              <div style={{ marginTop: '0.5rem', padding: '1.15rem', border: '1px solid var(--border)', borderRadius: '16px', background: 'var(--bg-surface)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.6rem' }}>
-                  <GraduationCap size={15} color="#06b6d4" />
+                  <GraduationCap size={15} color="#8b5cf6" />
                   <span style={{ fontSize: '0.8rem', fontWeight: 700 }}>Education</span>
                 </div>
                 <p style={{ fontSize: '0.82rem', color: 'var(--text-2)', lineHeight: 1.5 }}>
@@ -997,7 +1123,7 @@ const Contact = ({ setIsResumeOpen }) => {
                   <span style={{ fontSize: '0.72rem', color: 'var(--text-3)' }}>Expected Graduation: 2026</span>
                 </p>
                 <div style={{ marginTop: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem' }}>
-                  <Globe size={15} color="#06b6d4" />
+                  <Globe size={15} color="#8b5cf6" />
                   <span style={{ fontSize: '0.8rem', fontWeight: 700 }}>Languages</span>
                 </div>
                 <p style={{ fontSize: '0.8rem', color: 'var(--text-2)' }}>
@@ -1038,20 +1164,20 @@ const App = () => {
           <motion.div
             key="loader"
             initial={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }}
-            style={{ position: 'fixed', inset: 0, zIndex: 9999, background: '#06080d', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1.5rem' }}
+            style={{ position: 'fixed', inset: 0, zIndex: 9999, background: '#E8E8E8', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1.5rem' }}
           >
             <motion.div
               animate={{ opacity: [0.4, 1, 0.4] }}
               transition={{ duration: 2, repeat: Infinity }}
               style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}
             >
-              <div style={{ width: 36, height: 36, borderRadius: '10px', background: 'linear-gradient(135deg, #3b82f6, #06b6d4)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '1.1rem', color: '#fff' }}>S</div>
-              <span style={{ fontWeight: 700, fontSize: '1.2rem', letterSpacing: '-0.04em', color: '#fff' }}>Safvan</span>
+              <div style={{ width: 36, height: 36, borderRadius: '10px', background: 'linear-gradient(135deg, #6552D0, #8b5cf6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '1.1rem', color: '#fff' }}>S</div>
+              <span style={{ fontWeight: 700, fontSize: '1.2rem', letterSpacing: '-0.04em', color: '#0a0a0a' }}>Safvan</span>
             </motion.div>
             <div>
               <div className="loader-bar">
                 <motion.div
-                  style={{ height: '100%', background: 'linear-gradient(90deg, #3b82f6, #06b6d4)', borderRadius: '2px' }}
+                  style={{ height: '100%', background: 'linear-gradient(90deg, #6552D0, #8b5cf6)', borderRadius: '2px' }}
                   initial={{ width: '0%' }}
                   animate={{ width: `${Math.min(loadPct, 100)}%` }}
                   transition={{ duration: 0.2 }}
@@ -1079,6 +1205,8 @@ const App = () => {
               <hr className="glow-rule" />
               <Skills />
               <hr className="glow-rule" />
+              <Tools />
+              <hr className="glow-rule" />
               <Projects />
               <hr className="glow-rule" />
               <Certifications />
@@ -1088,11 +1216,11 @@ const App = () => {
 
             <Resume isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
 
-            <footer style={{ padding: '3rem 0', borderTop: '1px solid var(--border)', background: 'rgba(6,8,13,0.5)' }}>
+            <footer style={{ padding: '3rem 0', borderTop: '1px solid var(--border)', background: 'rgba(255,255,255,0.6)' }}>
               <div className="container footer-inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem' }}>
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
-                    <div style={{ width: 22, height: 22, borderRadius: '6px', background: 'linear-gradient(135deg, #3b82f6, #06b6d4)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '0.65rem', color: '#fff' }}>S</div>
+                    <div style={{ width: 22, height: 22, borderRadius: '6px', background: 'linear-gradient(135deg, #6552D0, #8b5cf6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '0.65rem', color: '#fff' }}>S</div>
                     <span style={{ fontWeight: 700, fontSize: '0.95rem', letterSpacing: '-0.03em' }}>Safvan</span>
                   </div>
                   <p style={{ color: 'var(--text-3)', fontSize: '0.78rem' }}>© 2026 Safvan Sidheeq. All rights reserved.</p>
@@ -1104,7 +1232,7 @@ const App = () => {
                     { href: 'mailto:safvankallayi7@gmail.com', icon: <Mail size={14} />, label: 'Email' },
                   ].map(link => (
                     <motion.a key={link.label} href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer"
-                      whileHover={{ y: -2, color: '#60a5fa' }}
+                      whileHover={{ y: -2, color: '#7c6bef' }}
                       style={{ color: 'var(--text-3)', display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.82rem' }}>
                       {link.icon} {link.label}
                     </motion.a>
